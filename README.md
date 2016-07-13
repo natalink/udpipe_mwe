@@ -7,15 +7,9 @@ Universal Dependencies treebanks feature [MWE annotation](http://universaldepend
 3. Run GIZA++ alignment
 
 ### Parsing with UDPipe
-Examples of the parsed sentences:
+Examples of the parsed sentences (not parallel, containing mwe):
 
 ```
-1       Avinoam Avinoam PROPN   NNP     Number=Sing     4       name    _       _
-2       Bar     bar     PROPN   NNP     Number=Sing     4       name    _       SpaceAfter=No
-3       -       -       PUNCT   HYPH    _       4       punct   _       SpaceAfter=No
-4       Yosef   Yosef   PROPN   NNP     Number=Sing     0       root    _       SpaceAfter=No
-5       .       .       PUNCT   .       _       4       punct   _       _
-
 1       Perhaps perhaps ADV     RB      _       4       advmod  _       _
 2       the     the     DET     DT      Definite=Def|PronType=Art       4       det     _       _
 3       prime   prime   ADJ     JJ      Degree=Pos      4       amod    _       _
