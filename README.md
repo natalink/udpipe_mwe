@@ -58,4 +58,40 @@ HEbrew parse:
 15      .       _       PUNCT   PUNCT   _       8       punct   _       _
 
 ```
+### Some issues with parsing Haaretz
 
+During parsing, I encountered some problems with m:n alignment and sentence segmentation that come from the original parallel corpus. Compare the content of files heb/Haaretz_2009_03_23.txt_heb.snt.aligned and eng/Haaretz_2009_03_23.txt_eng.snt.aligned
+```
+ דיווח : יחידת קומנדו נחתה בסוריה חודש לפני הפצצת הכור. יו.סי מלמן 
+```
+```
+The Associated Press.
+```
+The output of the parser:
+```
+1       דיווח   _       NOUN    NOUN    Gender=Masc|Number=Sing 0       root    _       _
+2       :       _       PUNCT   PUNCT   _       1       punct   _       _
+3       יחידת   _       NOUN    NOUN    Definite=Red|Gender=Fem|Number=Sing     5       nsubj   _       _
+4       קומנדו  _       NOUN    NOUN    Gender=Masc|Number=Sing 3       nmod:smixut     _       _
+5       נחתה    _       VERB    VERB    Gender=Fem|Number=Sing|Person=3|Tense=Past      1       conj:discourse  _       _
+6       בסוריה  _       ADP     ADP     _       7       case    _       _
+7       חודש    _       NOUN    NOUN    Gender=Masc|Number=Sing 5       nmod    _       _
+8       לפני    _       ADP     ADP     _       9       case    _       _
+9       הפצצת   _       NOUN    NOUN    Definite=Red|Gender=Fem|Number=Sing     7       nmod    _       _
+10-11   הכור    _       _       _       _       _       _       _       SpaceAfter=No
+10      ה       _       DET     DET     PronType=Art    11      det:def _       _
+11      כור     _       NOUN    NOUN    Gender=Masc|Number=Sing 9       nmod:smixut     _       _
+12      .       _       PUNCT   PUNCT   _       1       punct   _       _
+
+1       יוסי    _       PROPN   PROPN   _       0       root    _       _
+2       מלמן    _       PROPN   PROPN   _       1       name    _       _
+3       .       _       PUNCT   PUNCT   _       1       punct   _       _
+```
+```
+1       The     the     DET     DT      Definite=Def|PronType=Art       3       det     _       _
+2       Associated      associated      PROPN   NNP     Number=Sing     3       compound        _       _
+3       Press   Press   PROPN   NNP     Number=Sing     0       root    _       SpaceAfter=No
+4       .       .       PUNCT   .       _       3       punct   _       _
+```
+
+Because it can't be predicted how the parser will segment the sentences, it is impossible(IMHO) to properly parallalize the corpus without some larger efforts. Though, some hacking can be done: before parsing, insert the <align id="x"> number before each sentence, and after parsing substitute accordingly to vert format.  
