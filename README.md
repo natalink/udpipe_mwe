@@ -94,4 +94,4 @@ The output of the parser:
 4       .       .       PUNCT   .       _       3       punct   _       _
 ```
 
-Because it can't be predicted how the parser will segment the sentences, it is impossible(IMHO) to properly parallalize the corpus without some larger efforts. Though, some hacking can be done: before parsing, insert the <align id="x"> number before each sentence, and after parsing substitute accordingly to vert format.  
+Because it can't be predicted how the parser will segment the sentences, it is impossible(IMHO) to properly parallalize the corpus without some larger efforts. Though, some hacking can be done: before parsing, insert the \<align id="x"\> number before each sentence, and after parsing substitute accordingly to vert format.  
